@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+<div>{{ .Content }}</div>
+
+{{ with .Params.tags }}
+<hr />
+<ul>
+  Tags: {{ range . }}
+  <a href="/tags/{{ . | urlize }}">{{ . }}</a>
+  {{ end }}
+</ul>
+
+{{ end }} {{ end }}

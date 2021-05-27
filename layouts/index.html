@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+<div class="upwraper">
+  <!-- content dari index page  -->
+  {{.Content}}
+</div>
+
+<h2>Daftar Blog</h2>
+<ul>
+  {{ range first 6 (where .Site.RegularPages "Section" "post") }}
+  <li>
+    <a href="{{.Permalink}}"> {{.Title}} </a>
+    <p>{{ or .Params.Description .Summary}}</p>
+    <span>Dibuat pada {{ dateFormat "Jan 2, 2006" "2015-01-21" }}</span>
+  </li>
+
+  {{ end }}
+</ul>
+
+<h2>Daftar Rekomendasi</h2>
+<ul>
+  {{ range first 6 (where .Site.RegularPages "Section" "rekomendasi") }}
+  <li>
+    <a href="{{.Permalink}}"> {{.Title}} </a>
+    <span>Dibuat pada {{ dateFormat "Jan 2, 2006" "2015-01-21" }}</span>
+  </li>
+
+  {{ end }}
+</ul>
+
+{{ end }}

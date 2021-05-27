@@ -1,0 +1,21 @@
+<!-- untuk Title -->
+{{ if .IsHome }}
+<title>{{ .Site.Title }}</title>
+{{else}}
+<title>{{.Site.Title}} | {{.Title}}</title>
+{{ end }}
+
+<!-- Meta Description  -->
+
+{{ if .Description }}
+<meta name="description" content="{{ .Description }}" />
+{{ else if eq .Kind "section"}}
+<meta name="description" content="{{ .Summary }}" />
+{{else}}
+<meta name="description" content="{{ .Site.Params.Description }}" />
+{{ end }}
+
+<!-- styling  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="{{.Site.BaseURL}}css/main.css" />

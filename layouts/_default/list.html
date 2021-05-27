@@ -1,0 +1,16 @@
+{{ define "main" }}
+<h2>{{ .Title }}</h2>
+<ul>
+  {{ range .Paginator.Pages }}
+  <li>
+    <a href="{{.Permalink}}"> {{.Title}} </a>
+    <p><p>{{ or .Params.Description .Summary}}</p></p>
+    <span>Dibuat pada {{ dateFormat "Jan 2, 2006" "2015-01-21" }}</span>
+  </li>
+
+  {{ end }}
+
+  <!-- paginator nav  -->
+  {{ template "_internal/pagination.html" . }}
+</ul>
+{{ end }}
