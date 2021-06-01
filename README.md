@@ -1,4 +1,4 @@
-# hugo-sandat
+# Sandat
 
 Simple Hugo Theme for blog Website.
 
