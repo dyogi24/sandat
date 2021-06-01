@@ -1,14 +1,63 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
+<!-- main Image -->
+{{if .Params.FeatureImage }}
+<div class="upwraper" style="background-image: url({{ .Params.FeatureImage}});">
+  <div class="gray-space">
+    <h1>{{ .Title }}</h1>
+  </div>
+</div>
+{{end}}
+<div class="main">
+  <div id="content">
+    {{ if not .Params.FeatureImage }}
 
-<div>{{ .Content }}</div>
+    <h1 class="title-no-feature">{{ .Title }}</h1>
+    {{ end }} {{ if eq .Type "post" }}
+    <div class="author-date">
+      <span>{{ .Params.Author }}</span>
 
-{{ with .Params.tags }}
-<hr />
-<ul>
-  Tags: {{ range . }}
-  <a href="/tags/{{ . | urlize }}">{{ . }}</a>
-  {{ end }}
-</ul>
+      <span> {{ dateFormat "2 Jan, 2006" .Date }}</span>
+    </div>
+    {{ end }}
 
-{{ end }} {{ end }}
+    <article class="markdown-body">{{ .Content }}</article>
+
+    {{ with .Params.tags }}
+    <ul class="bottom-tag">
+      Tags: {{ range . }}
+      <li>
+        <a class="tag-btn" href="/tags/{{ . | urlize }}">{{ . }}</a>
+      </li>
+      {{ end }}
+    </ul>
+
+    {{ end }}
+    <!-- jika post -->
+    {{ if eq .Type "post" }}
+
+    <div class="content-item">
+      <h2 class="item-title">Post Terbaru</h2>
+      <ul class="item-list">
+        {{ range first 3 (where .Site.RegularPages "Section" "post") }}
+        <a href="{{.Permalink}}">
+          <li>
+            <h3>{{.Title}}</h3>
+            <p>{{ or .Params.Description .Summary}}</p>
+            <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+          </li>
+        </a>
+
+        {{ end }}
+      </ul>
+      <div class="center">
+        <a href="/post"><h4 class="read-more">Read More</h4></a>
+      </div>
+    </div>
+  </div>
+  <aside class="toc">
+    <h2>Table Of Content</h2>
+    {{ .TableOfContents }}</aside>
+  {{end}}
+  </div>
+</div>
+{{ end }}

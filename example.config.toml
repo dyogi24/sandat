@@ -1,0 +1,10 @@
+baseURL = "https://dyogi-blog.netlify.app/"
+languageCode = "en-us"
+paginate = 5
+
+summaryLength = 10
+theme = "sandat"
+title = "Dyogi Blog"
+
+[params]
+Description = "blog yang membahas Linux, Mikrotik, PC, dll"

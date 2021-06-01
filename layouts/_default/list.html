@@ -1,16 +1,19 @@
 {{ define "main" }}
-<h2>{{ .Title }}</h2>
-<ul>
-  {{ range .Paginator.Pages }}
-  <li>
-    <a href="{{.Permalink}}"> {{.Title}} </a>
-    <p><p>{{ or .Params.Description .Summary}}</p></p>
-    <span>Dibuat pada {{ dateFormat "Jan 2, 2006" "2015-01-21" }}</span>
-  </li>
+<div id="content" class="content-item">
+  <h2 class="item-title title-no-feature">{{ .Title }}</h2>
 
-  {{ end }}
+  <ul class="item-list">
+    {{ range .Paginator.Pages }}
+    <a href="{{.Permalink}}">
+      <li>
+        <h3>{{.Title}}</h3>
+        <p>{{ or .Params.Description .Summary}}</p>
+        <span>Dibuat pada {{ dateFormat "2 Jan, 2006" .Date }}</span>
+      </li>
+    </a>
 
-  <!-- paginator nav  -->
-  {{ template "_internal/pagination.html" . }}
-</ul>
-{{ end }}
+    {{ end }}
+  </ul>
+</div>
+<!-- paginator nav  -->
+{{ template "_internal/pagination.html" . }} {{ end }}

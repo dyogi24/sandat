@@ -2,10 +2,32 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     {{- partial "head.html" . -}}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0YZCDWXWYH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0YZCDWXWYH");
+    </script>
+    <script
+      data-ad-client="ca-pub-9585272900690922"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
   </head>
   <body>
+    <!-- header -->
     {{- partial "header.html" . -}}
-    <div id="content">{{- block "main" . }}{{- end }}</div>
+    <!-- main -->
+    {{- block "main" . }}{{- end }}
+    <!-- footer -->
     {{- partial "footer.html" . -}}
   </body>
 </html>
