@@ -15,7 +15,7 @@ git init
 git clone https://github.com/dyogi24/sandat themes/sandat
 
 'or'
-git submodule add https://github.com/chipzoller/sandat themes/sandat
+git submodule add https://github.com/dyogi24/sandat themes/sandat
 ```
 Open config.toml file in your code editor, set `theme = "sandat"`
 
