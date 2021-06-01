@@ -14,6 +14,7 @@ git init
 git clone https://github.com/dyogi24/sandat themes/sandat
 ```
 Open config.toml file in your code editor, set `theme = "sandat"`
+
 see example configuration on theme/sandat folder for more information.
 
 you can replace default archetypes to archetypes has provided from this theme by just delete file on archetypes folder on your site root directory.
